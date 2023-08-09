@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <style>
+        @keyframes sample-ani {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(500px, 0);
+            }
+
+            100% {
+                transform: translate(700px, 500px);
+                background-color: red;
+            }
+        }
+
+
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            border: 2px solid black;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            /* animation-iteration-count: 반복 횟수; */
+            /* infinite = 무한 반복 */
+
+            /* animation-direction: 방향 설정 */
+            /* alternate = 원래 지점으로 돌아가기 */
+            /* reverse = 반대 방향에서 시작하기 */
+            animation: sample-ani 2s infinite alternate;
+
+            /* animation-fill-mode */
+            /* forwards = 애니메이션이 끝나는 지점에 컨텐츠 고정 */
+            /* animation: sample-ani 2s forwards; */
+
+            /* animation-play-state 재생/일시정지 여부 */
+            /* running = 실행 (기본값) */
+            /* paused = 멈춤 */
+
+            &:hover {
+                /* 마우스를 올렸을 때 재생이 멈춤 */
+                animation-play-state: paused;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Animation</h1>
+    <div class="box">BOX</div>
+</body>
+
+</html>

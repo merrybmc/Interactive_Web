@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <style>
+        .world {
+            width: 80vw;
+            height: 80vh;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            /* 시야각 거리 */
+            /* 눈으로부터 보이는 거리 */
+            /* perspective: 500px; */
+        }
+
+        .card {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 100px;
+            height: 150px;
+            margin: 1em;
+
+
+
+            /* 변화가 없어도 default 설정을 해주는게 성능,이론적으로 좋다 */
+            transform: rotateY(0deg);
+            /* transform: perspective(500px) rotateY(45deg); */
+            transition: 1s;
+
+            transform-style: preserve-3d;
+
+            /* 문 열리듯이 */
+            /* transform-origin: left; */
+        }
+
+
+        .card-side {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: 0;
+            top: 0;
+            /* right: 0;
+            bottom: 0; */
+            width: 100%;
+            height: 100%;
+            border-radius: 0.5em;
+            font-size: 1.5rem;
+
+            backface-visibility: hidden;
+            /* -webkit- : 브라우저 호환을 위해 */
+            -webkit-backface-visibility: hidden;
+        }
+
+        .card-side-front {
+            background-color: red;
+            z-index: 1;
+        }
+
+        .card-side-back {
+            background-color: yellow;
+            transform: rotateY(-180deg);
+            z-index: 0;
+
+        }
+
+        .world:hover .card {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="world">
+        <div class="card">
+            <div class="card-side card-side-front">Front</div>
+            <div class="card-side card-side-back">Back</div>
+        </div>
+        <div class="card">CARD</div>
+        <div class="card">CARD</div>
+    </div>
+</body>
+
+</html>
