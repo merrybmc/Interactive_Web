@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../reset.css">
+    <title></title>
+
+    <style>
+        .stage {
+            width: 100vw;
+            height: 100vh;
+            background: #333;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .door {
+            width: 100px;
+            height: 150px;
+
+            position: relative;
+
+        }
+
+        .door-back {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+
+            overflow: hidden;
+        }
+
+        .ilbuni {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100px;
+            height: 100px;
+            background-repeat: no-repeat;
+            background-position: 50% 100%;
+            background-size: contain;
+            transform: translate3d(100%, 0, 0);
+            transition-duration: 0.5s;
+            transition-delay: 0.5s;
+        }
+
+        .door:nth-child(1) .ilbuni {
+            background-image: url("../images/ilbuni_0.png");
+        }
+
+        .door:nth-child(2) .ilbuni {
+            background-image: url("../images/ilbuni_1.png");
+        }
+
+        .door:nth-child(3) .ilbuni {
+            background-image: url("../images/ilbuni_2.png");
+        }
+
+        .door-body {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            transition: all 1s;
+
+            transform-origin: left top;
+        }
+
+        .door:nth-child(1) .door-body {
+            background-color: rgba(255, 0, 0, 0.7);
+        }
+
+        .door:nth-child(2) .door-body {
+            background-color: rgba(0, 255, 0, 0.7);
+        }
+
+        .door:nth-child(3) .door-body {
+            background-color: rgba(0, 0, 255, 0.7);
+        }
+
+        /* .door:hover .door-body {
+            transform: perspective(800px) rotateY(-110deg);
+        }
+
+        .door:hover .ilbuni {
+            transform: translate3d(0, 0, 0);
+        } */
+
+        .door-opened .door-body {
+            transform: perspective(800px) rotateY(-110deg);
+        }
+
+        .door-opened .ilbuni {
+            transform: translate3d(0, 0, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stage">
+        <div class="door">
+            <div class="door-back">
+                <div class="ilbuni"></div>
+            </div>
+            <div class="door-body"></div>
+        </div>
+        <div class="door">
+            <div class="door-back">
+                <div class="ilbuni"></div>
+            </div>
+            <div class="door-body"></div>
+        </div>
+        <div class="door">
+            <div class="door-back">
+                <div class="ilbuni"></div>
+            </div>
+            <div class="door-body"></div>
+        </div>
+    </div>
+</body>
+
+<script>
+    // 전역변수 사용 회피
+    (function () {
+        const stageElem = document.querySelector(".stage");
+        let currentItem;
+        // let currentItem = document.querySelector(".door-opened")
+
+        function activate(elem) {
+            elem.classList.add("door-opened")
+            currentItem = elem;
+        }
+
+        function inactivate(elem) {
+            elem.classList.remove("door-opened")
+        }
+
+        function doorHandler(e) {
+            const targetElem = e.target;
+
+            currentItem && inactivate(currentItem)
+
+            // classList
+            // add 더하기
+            // remove 빼기
+            // toggle 넣었다 뺏다 on/off
+            // contains 해당 클래스가 있는지 확인
+            targetElem.classList.contains("door-body") && activate(targetElem.parentNode)
+        }
+
+        stageElem.addEventListener("click", doorHandler);
+
+        // 문 하나 열어놓고 시작하기
+        activate(document.querySelector('.door:nth-child(2)'));
+
+    })();
+</script>
+
+</html>
