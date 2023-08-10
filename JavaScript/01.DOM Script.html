@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <style>
+        .special {
+            border: 10px dashed red;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="a">d</div>
+
+</body>
+
+<script>
+    // 태그 클래스 선택
+    const a = document.querySelector(".a");
+
+    // 속성명 = 값 추가
+    a.setAttribute("data-id", 123);
+    a.setAttribute("class", 'foo')
+
+    // 속성의 값 불러오기
+    console.log("data-id", a.getAttribute("data-id"));
+
+    // id 출력
+    console.log("dataset", a.dataset);
+
+    a.dataset.id = 777;
+    a.dataset.title = "hello";
+
+    // 태그 추가
+    const pElem = document.createElement("p");
+    console.log("pElem", pElem);
+
+    pElem.setAttribute("class", 'b')
+
+    pElem.innerHTML = `<a href="#">Hello World</a>`;
+    console.log("pElem innerHTML", pElem);
+
+    // a.append(pElem);
+
+    // 태그 하위 최하단 추가
+    a.appendChild(pElem);
+
+    // 해당 클래스 태그 삭제
+    a.removeChild(document.querySelector(".b"));
+
+    const special = document.createElement("div");
+    special.setAttribute("class", "special");
+
+    // a.append(special);
+
+    // class에 special 추가
+    a.classList.add("special");
+
+    // class값 변경 (대입)
+    a.className = 'special';
+
+    // class on/off 추가/삭제
+    a.classList.toggle("special"); // true
+    a.classList.toggle("special"); // false
+    a.classList.toggle("special"); // true
+</script>
+
+</html>

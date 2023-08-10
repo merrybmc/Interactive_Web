@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <style>
+        div {
+            padding: 20px;
+            border: 5px solid black;
+        }
+
+        .elem2 {
+            /* pointer-events: none; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="elem1" data-id="about">
+        <div class="elem2">
+            <div class="elem3">elem3</div>
+        </div>
+    </div>
+</body>
+
+<script>
+    const elem1 = document.querySelector(".elem1")
+    elem1.addEventListener("click", (e) => {
+        console.log(e.target.dataset.id)
+        e.target.closest(".elem1");
+    })
+</script>
+
+
+
+</html>

@@ -1,0 +1,67 @@
+div {
+  margin: 0;
+}
+
+.stage {
+  position: relative;
+
+  /* 4:3 비율 100vw, 75vw */
+  width: 100vw;
+  height: 35vw;
+  background-color: yellow;
+
+  /* 화면 밖으로 나갔을 때 스크롤 안생기게 */
+  overflow: hidden;
+}
+
+@keyframes moving {
+  /* from === 0% */
+  from {
+    transform: translateX(0);
+  }
+  /* to === 100% */
+  to {
+    transform: translateX(90vw);
+  }
+}
+
+.ilbuni {
+  position: absolute;
+
+  width: 100px;
+  height: 100px;
+
+  background-repeat: no-repeat;
+  /* 가운데 */
+  background-position: 50% 50%;
+
+  /* contain = 이미지가 짤리지 않고 온전하게 다 보이게 */
+  /* cover = 화면에 꽉 차게 */
+  background-size: contain;
+  /* background-size: cover; */
+
+  animation: moving infinite alternate;
+
+  cursor: pointer;
+}
+
+.img1 {
+  left: 5%;
+  bottom: 5%;
+  background-image: url('/images/ilbuni_0.png');
+  animation-duration: 2s;
+}
+
+.img2 {
+  left: 10%;
+  bottom: 3%;
+  background-image: url('/images/ilbuni_1.png');
+  animation-duration: 3s;
+}
+
+.img3 {
+  left: 7%;
+  bottom: 5%;
+  background-image: url('/images/ilbuni_2.png');
+  animation-duration: 4s;
+}

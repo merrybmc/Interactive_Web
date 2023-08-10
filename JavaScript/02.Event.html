@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <!-- head에서 js 불러오기 -->
+    <!-- DOM이 로드 되기 전, HTML 파싱이 끝난 후 load -->
+    <script defer src="defer.js"></script>
+
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .characters {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            background: #fff000;
+        }
+
+        .ilbuni {
+            width: 100px;
+            cursor: pointer;
+        }
+
+        .characters .ilbuni {
+            display: inline-block;
+        }
+
+        .special {
+            border: 10px dashed red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tag1">ABC</div>
+    <div class="tag2">ABC</div>
+    <div class="characters">
+        <div class="ilbuni a">
+            <img src="/images/ilbuni_0.png" alt="일분이">
+        </div>
+        <div class="ilbuni b">
+            <img src="/images/ilbuni_1.png" alt="일분이">
+        </div>
+        <div class="ilbuni c">
+            <img src="/images/ilbuni_2.png" alt="일분이">
+        </div>
+        <div class="ilbuni d">
+            <img src="/images/ilbuni_3.png" alt="일분이">
+        </div>
+    </div>
+</body>
+
+<script>
+    const tag1 = document.querySelector(".tag1");
+
+    // addEventListener(이벤트 타입, 함수)
+    // click
+    tag1.addEventListener("click", function () {
+        tag1.innerHTML = "Hello World";
+    });
+
+    const tag2 = document.querySelector(".tag2");
+    console.log(tag2);
+
+    // 웹이 모두 렌더링된 후 실행
+    // load
+    // 'DOMContentLoaded' = DOM 구조가 렌더링 된 후 실행
+    window.addEventListener('load', function () {
+        console.log("load");
+    })
+
+    const characters = document.querySelector(".characters");
+
+    function clickHandler(e) {
+        console.log("event", e)
+
+        // this, currentTarget이 가리키는 것은 동일하다.
+        // 이벤트가 등록되어있는 객체를 가리킨다. 
+        console.log("currentTarget", e.currentTarget);
+        console.log("this", this);
+
+        // 클릭한 객체를 가리킨다.
+        console.log("target", e.target);
+    }
+
+    characters.addEventListener("click", clickHandler)
+
+</script>
+
+</html>

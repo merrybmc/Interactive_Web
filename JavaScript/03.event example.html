@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="stage">
+        <div class="ilbuni img1"></div>
+        <div class="ilbuni img2"></div>
+        <div class="ilbuni img3"></div>
+    </div>
+
+    <script>
+        // 전역변수 사용 방지를 위해
+        (function () {
+            const stage = document.querySelector(".stage");
+            // const ilbuni = document.querySelectorAll(".ilbuni");
+
+            // function clickIlbuni() {
+            // this.remove(ilbuni[i]);
+            // console.log(this.parentNode);
+            // stage.removeChild(this);
+            // this.parentNode.removeChild(this);
+            // }
+
+            // for (i = 0; i < ilbuni.length; i++) {
+            //     ilbuni[i].addEventListener('click', clickIlbuni);
+            // }
+
+            // 이벤트 위임
+            function clickHandler(e) {
+                // class 속성에 이름이 포함되어 있는지
+                if (e.target.classList.contains('ilbuni')) {
+                    stage.removeChild(e.target)
+                }
+            }
+
+            stage.addEventListener('click', clickHandler);
+        })();
+    </script>
+</body>
+
+
+</html>

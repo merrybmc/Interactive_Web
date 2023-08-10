@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <style>
+        .btn-label {
+            text-shadow: rgba(255, 255, 255, 1) 0 1px 0;
+            pointer-events: none;
+        }
+
+        .icon {
+            width: 60px;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <button class="menu-btn" data-value="1">
+            <img src="../images/ilbuni_1.png" alt="" class="icon">
+            <span class="btn-label">일분이 1</span>
+        </button>
+        <button class="menu-btn" data-value="2">
+            <img src="../images/ilbuni_2.png" alt="" class="icon">
+            <span class="btn-label">일분이 2</span>
+        </button>
+        <button class="menu-btn" data-value="3">
+            <img src="../images/ilbuni_3.png" alt="" class="icon">
+            <span class="btn-label">일분이 3</span>
+        </button>
+    </div>
+</body>
+
+<script>
+    // 성능 저하
+    // const btns = document.querySelectorAll(".menu-btn");
+
+    // function  clickBtnHandler() {
+    //     console.log(this)
+    // }
+
+    // for (let i = 0; i < btns.length; i++) {
+    //     btns[i].addEventListener("click", clickBtnHandler)
+    // }
+
+    // 이벤트 위임
+    const menu = document.querySelector(".menu")
+
+    function clickBtnHandler(e) {
+        // console.log(e.target.getAttribute("data-value"));
+        let elem = e.target;
+
+        while (!elem.classList.contains("menu-btn")) {
+            elem = elem.parentNode;
+
+            if (elem.nodeName === 'BODY') {
+                elem = null;
+                return;
+            }
+        }
+
+        console.log(e.target.dataset.value)
+        // console.log(e.target);
+    }
+
+    menu.addEventListener("click", clickBtnHandler)
+</script>
+
+</html>
