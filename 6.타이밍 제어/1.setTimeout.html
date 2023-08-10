@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <style>
+        .btn {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn">취소</button>
+</body>
+
+<script>
+    const btn = document.querySelector(".btn");
+    let timeId;
+    let intervalId;
+    let frameId;
+
+    // 1초 후에 이 함수를 1번 실행
+    const printText = () => {
+        console.log("setTimeout!");
+    }
+
+    // timeId = setTimeout(printText, 3000);
+    // 밀리세컨드 1/1000 , 1000 = 1초
+
+    // console.log("timeId", timeId);
+
+    // 타이머 도중에 취소
+    // clearTimeout(timeId);
+
+
+    const timerCancle = () => {
+        console.log("타이머취소");
+        // clearTimeout(timeId);
+        clearTimeout(intervalId);
+        cancelAnimationFrame(frameId);
+    }
+
+    btn.addEventListener("click", timerCancle)
+
+    // 1초마다 반복
+    // 단점 = 반복은 해주지만 컴퓨터가 처리할 능력이 안되면 버벅거리게 됨
+    intervalId = setInterval(printText, 1000);
+
+    let count = 0;
+
+    const sample = () => {
+        count++;
+        console.log("count", count);
+
+        if (count > 1000) {
+            return;
+        }
+
+        console.log("sample!");
+
+        frameId = requestAnimationFrame(sample);
+    }
+
+    sample();
+</script>
+
+</html>
