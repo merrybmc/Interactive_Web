@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+
+    </title>
+
+    <style>
+        @keyframes ball-ani {
+
+            /* from === 0% */
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(200px, 200px);
+            }
+        }
+
+        .ball {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: red;
+
+            transition: 1s;
+            /* animation: ball-ani 1s 3 alternate forwards; */
+
+        }
+
+        .ballAni {
+            animation: ball-ani 1s 3 alternate forwards;
+        }
+
+        .ball.start {
+            background-color: black;
+        }
+
+        .ball.end {
+            background-color: dodgerblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ball"></div>
+</body>
+
+<script>
+    (function () {
+        const ballElem = document.querySelector(".ball")
+
+        // animation event
+
+        const printText = () => {
+            console.log('반복');
+        }
+
+        // animationiteration = 애니메이션이 반복될 때마다 발동하는 이벤트
+        ballElem.addEventListener("animationiteration", printText)
+
+        const aniStart = () => {
+            // ballElem.classList.add("start")
+            ballElem.style.backgroundColor = 'black';
+        }
+
+        // 애니메이션이 시작할 때 발동하는 이벤트
+        ballElem.addEventListener("animationstart", aniStart)
+
+        const aniEnd = () => {
+            // ballElem.classList.add("end")
+            ballElem.style.backgroundColor = 'dodgerblue';
+        }
+
+        // 애니메이션이 끝날 때 발동하는 이벤트
+        ballElem.addEventListener("animationend", aniEnd)
+
+        const addAnimation = () => {
+            // ballElem.classList.add("ballAni")
+            ballElem.style.animation = 'ball-ani 1s 3 alternate forwards';
+        }
+
+        ballElem.addEventListener("click", addAnimation)
+
+        // transition event
+
+        // const ballEvent = (e) => {
+        //     // clientX = 클릭한 X좌표 위치
+        //     // clientY = 클릭한 Y좌표 위치
+        //     console.log("x", e.clientX);
+        //     console.log("y", e.clientY);
+        //     ballElem.style.transform = `translate(${e.clientX - 15}px, ${e.clientY - 15}px)`
+        // }
+
+        // window.addEventListener("click", ballEvent)
+
+
+        // const startEvent = () => {
+        //     ballElem.classList.add("start")
+        // }
+
+        // // transitionstart = transition이 시작될 때 발생하는 이벤트
+        // ballElem.addEventListener("transitionstart", startEvent)
+
+        // const endEvent = () => {
+        //     ballElem.classList.add("end")
+        // }
+
+        // // transitionend = transition이 끝날 때 발동하는 이벤트
+        // ballElem.addEventListener('transitionend', endEvent)
+    })()
+</script>
+
+</html>
