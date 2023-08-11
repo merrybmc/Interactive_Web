@@ -1,0 +1,85 @@
+body {
+  -webkit-overflow-scrolling: touch;
+  color: #555;
+  background-color: #fff000;
+  height: 300vh;
+}
+
+.world {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  /* 3D 효과 적용 */
+  perspective: 1000px;
+}
+
+.stage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  /* 하위 태그들에 3D 효과 보존 전파 */
+  transform-style: preserve-3d;
+}
+
+.wall {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.house {
+  width: 100vw;
+  height: 100vh;
+  transform: translateZ(-490vw);
+  transform-style: preserve-3d;
+}
+
+.wall-left {
+  /* translateZ(-500vw) */
+  left: -500vw;
+  width: 1000vw;
+  transform: rotateY(90deg);
+  background-color: #f8f8f8;
+}
+
+.wall-right {
+  /* translateZ(-400vw) */
+  left: -400vw;
+  width: 1000vw;
+  background-color: #f8f8f8;
+  transform: rotateY(90deg);
+}
+
+.wall-front-a {
+  transform: translateZ(300vw);
+}
+
+.wall-front-b {
+  transform: translateZ(50vw);
+}
+
+.wall-front-c {
+  transform: translateZ(-200vw);
+}
+
+.wall-front-d {
+  transform: translateZ(-500vw);
+}
+
+.wall-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.wall-title {
+  font-size: 5rem;
+}
